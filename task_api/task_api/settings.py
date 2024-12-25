@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # My apps
     "tasks.apps.TasksConfig",
     "accounts.apps.AccountsConfig",
+    "api.apps.ApiConfig",
 ]
 
 MIDDLEWARE = [
