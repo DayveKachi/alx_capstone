@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, exceptions
 from .serializers import CustomUserSerializer
 from django.contrib.auth import get_user_model
 from rest_framework.authtoken.models import Token
@@ -29,3 +29,11 @@ class CustomUserViewSet(viewsets.ModelViewSet):
             {"message": "User updated successfully", "data": serializer.data},
             status=status.HTTP_200_OK,
         )
+
+    # def destroy(self, request, *args, **kwargs):
+    #     user = request.user
+    #     if not user.is_superuser:
+    #         raise exceptions.PermissionDenied(
+    #             "You do not have permissions to delete this user."
+    #         )
+    #     return super().destroy(request, *args, **kwargs)

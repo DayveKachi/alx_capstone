@@ -8,9 +8,9 @@ User = get_user_model()
 class Task(models.Model):
     """Define the attributes of a task"""
 
-    PRIORITY_CHOICES = {("Low", "Low"), ("Medium", "Medium"), ("High", "High")}
+    PRIORITY_CHOICES = (("Low", "Low"), ("Medium", "Medium"), ("High", "High"))
 
-    STATUS_CHOICES = {("Pending", "Pending"), ("Completed", "Completed")}
+    STATUS_CHOICES = (("Pending", "Pending"), ("Completed", "Completed"))
 
     title = models.CharField(max_length=200)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="tasks")

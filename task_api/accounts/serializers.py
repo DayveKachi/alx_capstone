@@ -19,12 +19,17 @@ class CustomUserSerializer(serializers.ModelSerializer):
             password = attrs.get("password")
             confirm_password = attrs.get("confirm_password")
             if not password or not confirm_password:
-                raise serializers.ValidationError("Both password fields are required.")
+                raise serializers.ValidationError(
+                    "Both password and confirm_password fields are required."
+                )
             if password != confirm_password:
                 raise serializers.ValidationError("Both password fields must match.")
-        elif "password" in attrs or "confirm_password" in attrs:
-            if attrs.get("password") != attrs.get("confirm_password"):
-                raise serializers.ValidationError("Both password fields must match.")
+        elif self.context["request"].method == "PUT":
+            if "password" in attrs or "confirm_password" in attrs:
+                if attrs.get("password") != attrs.get("confirm_password"):
+                    raise serializers.ValidationError(
+                        "Both password and confirm_password fields are required."
+                    )
         return attrs
 
     def create(self, validated_data):

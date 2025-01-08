@@ -9,6 +9,7 @@ class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = (
+            "id",
             "title",
             "owner",
             "description",
@@ -17,17 +18,18 @@ class TaskSerializer(serializers.ModelSerializer):
             "status",
             "completed_timestamp",
         )
-        read_only_fields = ("owner", "completed_timestamp", "status")
+        read_only_fields = ("id", "owner", "completed_timestamp", "status")
 
     def validate(self, attrs):
         due_date = attrs.get("due_date")
-        priority = attrs.get("priority_level")
-        if due_date > timezone.now().date():
-            raise serializers.ValidationError("Due date cannot be in the future.")
-        if priority not in ["Low", "Medium", "High"]:
-            raise serializers.ValidationError(
-                "priority must be either Low, Medium or High."
-            )
+        # priority = attrs.get("priority_level")
+        if due_date:
+            if due_date < timezone.now().date():
+                raise serializers.ValidationError("Due date cannot be in the past.")
+        # if priority not in ["Low", "Medium", "High"]:
+        #     raise serializers.ValidationError(
+        #         "priority must be either Low, Medium or High."
+        #     )
         return super().validate(attrs)
 
 
@@ -37,6 +39,7 @@ class TaskStatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = (
+            "id",
             "title",
             "owner",
             "description",
@@ -47,6 +50,7 @@ class TaskStatusSerializer(serializers.ModelSerializer):
         )
 
         read_only_fields = (
+            "id",
             "title",
             "owner",
             "description",
@@ -55,10 +59,10 @@ class TaskStatusSerializer(serializers.ModelSerializer):
             "completed_timestamp",
         )
 
-        def validate(self, attrs):
-            status = attrs.get("status")
-            if status not in ["Pending", "Completed"]:
-                raise serializers.ValidationError(
-                    "Status must be either Pending or Completed"
-                )
-            return super().validate(attrs)
+        # def validate(self, attrs):
+        #     status = attrs.get("status")
+        #     if status not in ["Pending", "Completed"]:
+        #         raise serializers.ValidationError(
+        #             "Status must be either Pending or Completed"
+        #         )
+        #     return super().validate(attrs)
