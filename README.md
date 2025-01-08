@@ -45,13 +45,13 @@ The Task Management API is designed to help users effectively manage their tasks
 
 1. **Clone the repository**:
 
-   git clone https://github.com/DayveKachi/alx_capstone
-   cd task-management-api
+   git clone https://github.com/DayveKachi/alx_capstone<br/>
+   cd task_api
 
 
 2. **Create a virtual environment**:
 
-    python -m venv venv
+    python -m venv venv<br/>
     source venv/bin/activate
 
 3. **Install dependencies**:
