@@ -45,7 +45,7 @@ The Task Management API is designed to help users effectively manage their tasks
 
 1. **Clone the repository**:
 
-   git clone https://github.com/your-username/task-management-api.git
+   git clone https://github.com/DayveKachi/alx_capstone
    cd task-management-api
 
 
