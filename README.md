@@ -76,43 +76,43 @@ The Task Management API is designed to help users effectively manage their tasks
 
   - POST /api/login/: login and obtain authentication token.
 
-- **Tasks** :
+- **Tasks**
 
- - GET /api/tasks/list/: List all tasks with optional filters and sorting.
+  - GET /api/tasks/list/: List all tasks with optional filters and sorting.
 
- - GET /api/tasks/: List all tasks with default sorting by due_date.
+  - GET /api/tasks/: List all tasks with default sorting by due_date.
 
- - POST /api/tasks/: Create a new task.
+  - POST /api/tasks/: Create a new task.
 
- - GET /api/tasks/<id>/: Retrieve a task by ID.
+  - GET /api/tasks/<id>/: Retrieve a task by ID.
 
- - PUT /api/tasks/<id>/: Update a task by ID.
+  - PUT /api/tasks/<id>/: Update a task by ID.
 
- - PATCH /api/tasks/<id>/: Partially update a task by ID.
+  - PATCH /api/tasks/<id>/: Partially update a task by ID.
 
- - DELETE /api/tasks/<id>/: Delete a task by ID.
+  - DELETE /api/tasks/<id>/: Delete a task by ID.
 
-- **Users**:
+- **Users**
 
- - GET /api/users/: List all users.
+  - GET /api/users/: List all users.
 
- - POST /api/users/new/: Create a new user.
+  - POST /api/users/new/: Create a new user.
 
- - GET /api/users/<id>/: Retrieve a user by ID.
+  - GET /api/users/<id>/: Retrieve a user by ID.
 
- - PUT /api/users/<id>/update/: Fully or partially Update a user by ID.
+  - PUT /api/users/<id>/update/: Fully or partially Update a user by ID.
 
- - DELETE /api/users/<id>/delete/: Delete a user by ID.
+  - DELETE /api/users/<id>/delete/: Delete a user by ID.
 
 - **Mark Task Complete/Incomplete**:
 
- - PATCH /api/tasks/<id>/status/: Mark a task as complete or incomplete.
+  - PATCH /api/tasks/<id>/status/: Mark a task as complete or incomplete.
 
 ## Example Requests
 
 - **create a task**
 
-  POST /api/tasks/
+  POST /api/tasks/<br/>
     {
       "title": "Finish project report",
       "description": "Complete the final draft of the project report",
@@ -123,7 +123,7 @@ The Task Management API is designed to help users effectively manage their tasks
 
 - **Mark Tasks as complete**
 
-  PATCH /api/tasks/1/status/
+  PATCH /api/tasks/1/status/<br/>
     {
       "status": "Completed"
     }
